@@ -9,8 +9,8 @@ import (
 	"testing"
 )
 
-func Read(filename string) ([][]rune, error) {
-	dict := [][]rune{}
+func Read(filename string) ([][]byte, error) {
+	dict := [][]byte{}
 
 	f, err := os.OpenFile(filename, os.O_RDONLY, 0660)
 	if err != nil {
@@ -24,7 +24,7 @@ func Read(filename string) ([][]rune, error) {
 			break
 		}
 		l = bytes.TrimSpace(l)
-		dict = append(dict, bytes.Runes(l))
+		dict = append(dict, l)
 	}
 
 	return dict, nil
